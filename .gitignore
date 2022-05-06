@@ -1,0 +1,9 @@
+# macOS spotligth
+.DS_Store
+# project specific
+.kube
+.envrc
+# local charts
+charts
+# local secrets
+secrets
