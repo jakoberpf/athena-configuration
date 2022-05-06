@@ -4,7 +4,7 @@ cd $GIT_ROOT
 
 # Kubernetes admin config [live]
 mkdir -p "$GIT_ROOT/live/.kube"
-cd $GIT_ROOT/live/.kube
+cd $GIT_ROOT/.kube
 
 vault2env CICD/repo/athena-bootstrap/live/kube-secret .env
 source .env
