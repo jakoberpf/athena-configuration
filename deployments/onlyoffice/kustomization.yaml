@@ -11,14 +11,16 @@ helmCharts:
     persistence:
       enabled: true
     ingress:
-      enabled: false
+      enabled: true
       hosts: 
         - host: onlyoffice.dev.erpf.de
-          tls: {}
+      tls:
+        enabled: true
+        redirect: false
       istioGateway:
-        enabled: false
+        enabled: true
       certManager:
-        enabled: false
+        enabled: true
         issuerRef: 
           name: cloudflare-letsencrypt-prod
 resources:
