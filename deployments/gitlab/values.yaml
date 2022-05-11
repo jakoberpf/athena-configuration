@@ -1,0 +1,40 @@
+global:
+  hosts:
+    domain: gitlab.dev.erpf.de # Provide a real base domain for GitLab. "gitlab." and "registry." will be exposed as subdomains.
+    externalIP: "10.110.180.110" # If using a static wildcard DNS record for the base domain, enter the IP address it resolves to here.
+#   ingress:
+#     annotations:
+#       "kubernetes.io/tls-acme": true
+#       "cert-manager.io/cluster-issuer": "cloudflare-letsencrypt-staging"
+#     configureCertmanager: false
+#     enabled: true
+#     tls:
+#       enabled: true
+
+certmanager: 
+  install: false
+
+certmanager-issuer:
+  email: letsencrypt@erpf.de # use your real email address here
+
+# nginx-ingress:
+#   enabled: false
+
+# gitlab:
+#   webservice: 
+#     ingress:
+#       tls:
+#         secretName: gitlab-tls
+#   gitaly:
+#     persistence:
+#       size: "8Gi"
+
+# registry:
+#   ingress:
+#     tls:
+#       secretName: registry-tls
+
+# minio:
+#   ingress:
+#     tls:
+#       secretName: minio-tls

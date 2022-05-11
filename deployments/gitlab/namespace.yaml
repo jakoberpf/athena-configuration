@@ -4,4 +4,4 @@ metadata:
   name: gitlab
   labels:
     app: gitlab
-    istio-injection: enabled
+    # istio-injection: enabled # Not supported by vanilla helm chart

@@ -1,0 +1,41 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gitlab-tls
+spec:
+  secretName: gitlab-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: gitlab.dev.erpf.de
+  dnsNames:
+  - "gitlab.dev.erpf.de"
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: registry-tls
+spec:
+  secretName: registry-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: registry.dev.gitlab.erpf.de
+  dnsNames:
+  - "registry.dev.gitlab.erpf.de"
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: minio-tls
+spec:
+  secretName: minio-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: minio.dev.gitlab.erpf.de
+  dnsNames:
+  - "minio.dev.gitlab.erpf.de"

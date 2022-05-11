@@ -23,3 +23,4 @@ namespace: gitlab
 #           name: cloudflare-letsencrypt-prod
 resources:
   - namespace.yaml
+  - certificates.yaml
