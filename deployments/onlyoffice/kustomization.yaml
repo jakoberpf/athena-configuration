@@ -8,12 +8,25 @@ helmCharts:
   releaseName: onlyoffice
   namespace: onlyoffice
   valuesInline:
+    enabled:
+      community: true
+      controlpanel: true
+      documents: true
+      mail: true
+    mysql:
+      clusterDomain: athena.local
+    rabbitmq:
+      clusterDomain: athena.local
+    redis:
+      clusterDomain: athena.local
+    postgresql:
+      clusterDomain: athena.local
     persistence:
       enabled: true
     ingress:
       enabled: true
       hosts: 
-        - host: onlyoffice.dev.erpf.de
+        - host: office.dev.erpf.de
       tls:
         enabled: true
         redirect: false
