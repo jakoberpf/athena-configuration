@@ -1,7 +1,7 @@
 global:
   hosts:
-    domain: gitlab.dev.erpf.de # Provide a real base domain for GitLab. "gitlab." and "registry." will be exposed as subdomains.
-    externalIP: "10.110.180.110" # If using a static wildcard DNS record for the base domain, enter the IP address it resolves to here.
+    domain: dev.erpf.de # Provide a real base domain for GitLab. "gitlab." and "registry." will be exposed as subdomains.
+    # externalIP: "10.110.180.110" # If using a static wildcard DNS record for the base domain, enter the IP address it resolves to here.
 #   ingress:
 #     annotations:
 #       "kubernetes.io/tls-acme": true
@@ -20,21 +20,21 @@ certmanager-issuer:
 # nginx-ingress:
 #   enabled: false
 
-# gitlab:
-#   webservice: 
-#     ingress:
-#       tls:
-#         secretName: gitlab-tls
-#   gitaly:
-#     persistence:
-#       size: "8Gi"
+gitlab:
+  webservice: 
+    ingress:
+      tls:
+        secretName: gitlab-tls
+  gitaly:
+    persistence:
+      size: "8Gi"
 
-# registry:
-#   ingress:
-#     tls:
-#       secretName: registry-tls
+registry:
+  ingress:
+    tls:
+      secretName: registry-tls
 
-# minio:
-#   ingress:
-#     tls:
-#       secretName: minio-tls
+minio:
+  ingress:
+    tls:
+      secretName: minio-tls
