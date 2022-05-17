@@ -26,3 +26,4 @@ helmCharts:
           name: cloudflare-letsencrypt-prod
 resources:
   - namespace.yaml
+  - secrets.yaml
