@@ -1,0 +1,29 @@
+namespace: bashhub
+helmGlobals:
+  chartHome: /Users/jakoberpf/Code/jakoberpf/kubernetes/charts/charts
+helmCharts:
+- name: bashhub
+  # repo: https://jakoberpf.github.io/charts/
+  version: 0.1.12
+  releaseName: bashhub
+  namespace: bashhub
+  valuesInline:
+    image:
+      repository: nicksherron/bashhub-server
+    persistence:
+      enabled: false
+    ingress:
+      enabled: true
+      hosts: 
+        - host: bashhub.dev.erpf.de
+      tls:
+        enabled: true
+        redirect: false
+      istioGateway:
+        enabled: true
+      certManager:
+        enabled: true
+        issuerRef: 
+          name: cloudflare-letsencrypt-staging
+resources:
+  - namespace.yaml
