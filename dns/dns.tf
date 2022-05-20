@@ -22,10 +22,10 @@ module "dns" {
 
 locals {
   domains = [
-    #   "bashhub.dev.erpf.de",
+      "bashhub.dev.erpf.de",
       "vaultwarden.dev.erpf.de",
-    #   "gitlab.dev.erpf.de",
-    #   "registry.dev.erpf.de",
-    #   "minio.gitlab.dev.erpf.de",
+      "gitlab.dev.erpf.de",
+      "registry.dev.erpf.de",
+      "minio.gitlab.dev.erpf.de",
   ]
 }
