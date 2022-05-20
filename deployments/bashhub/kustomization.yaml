@@ -1,9 +1,7 @@
 namespace: bashhub
-helmGlobals:
-  chartHome: /Users/jakoberpf/Code/jakoberpf/kubernetes/charts/charts
 helmCharts:
 - name: bashhub
-  # repo: https://jakoberpf.github.io/charts/
+  repo: https://jakoberpf.github.io/charts/
   version: 0.1.12
   releaseName: bashhub
   namespace: bashhub
