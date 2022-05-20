@@ -2,7 +2,7 @@ namespace: bashhub
 helmCharts:
 - name: bashhub
   repo: https://jakoberpf.github.io/charts/
-  version: 0.1.12
+  version: 0.1.13
   releaseName: bashhub
   namespace: bashhub
   valuesInline:
