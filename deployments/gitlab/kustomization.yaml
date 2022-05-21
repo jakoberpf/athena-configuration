@@ -1,26 +1,13 @@
 namespace: gitlab
 # helmCharts:
 # - name: gitlab
-#   # repo: https://jakoberpf.github.io/charts/
-#   version: 0.0.1
+#   repo: https://jakoberpf.github.io/charts/
+#   version: 5.10.0
 #   releaseName: gitlab
 #   namespace: gitlab
 #   valuesInline:
-#     persistence:
-#       enabled: false
-#     ingress:
-#       enabled: true
-#       hosts: 
-#         - host: gitlab.dev.erpf.de
-#       tls:
-#         enabled: true
-#         redirect: false
-#       istioGateway:
-#         enabled: true
-#       certManager:
-#         enabled: true
-#         issuerRef: 
-#           name: cloudflare-letsencrypt-prod
 resources:
   - namespace.yaml
   - certificates.yaml
+  - virtualservice.yaml
+  - gateway.yaml

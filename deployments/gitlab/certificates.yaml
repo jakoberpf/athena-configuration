@@ -10,7 +10,13 @@ spec:
     kind: ClusterIssuer
   commonName: gitlab.dev.erpf.de
   dnsNames:
-  - "gitlab.dev.erpf.de"
+    - gitlab.dev.erpf.de
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"  
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "istio-system"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "istio-system"
 
 ---
 apiVersion: cert-manager.io/v1
@@ -24,7 +30,13 @@ spec:
     kind: ClusterIssuer
   commonName: registry.dev.erpf.de
   dnsNames:
-  - "registry.dev.erpf.de"
+    - registry.dev.erpf.de
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"  
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "istio-system"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "istio-system"
 
 ---
 apiVersion: cert-manager.io/v1
@@ -38,4 +50,10 @@ spec:
     kind: ClusterIssuer
   commonName: minio.dev.erpf.de
   dnsNames:
-  - "minio.dev.erpf.de"
+    - minio.dev.erpf.de
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"  
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "istio-system"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "istio-system"
