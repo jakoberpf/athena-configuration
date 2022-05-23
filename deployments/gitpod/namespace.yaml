@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gitpod
+  labels:
+    app: gitpod
+    # istio-injection: enabled # Not supported by vanilla helm chart
