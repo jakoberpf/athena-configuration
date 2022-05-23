@@ -1,11 +1,4 @@
 namespace: gitlab
-# helmCharts:
-# - name: gitlab
-#   repo: https://jakoberpf.github.io/charts/
-#   version: 5.10.0
-#   releaseName: gitlab
-#   namespace: gitlab
-#   valuesInline:
 resources:
   - namespace.yaml
   - certificates.yaml
