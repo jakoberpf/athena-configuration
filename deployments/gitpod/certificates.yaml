@@ -1,0 +1,21 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gitpod-tls
+spec:
+  secretName: gitpod-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: gitpod.dev.erpf.de
+  dnsNames:
+    - gitpod.dev.erpf.de
+    - "*.gitpod.dev.erpf.de"
+    - "*.ws.gitpod.dev.erpf.de"
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"  
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "istio-system"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "istio-system"

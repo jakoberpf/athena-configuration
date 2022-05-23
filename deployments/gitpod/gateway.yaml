@@ -1,0 +1,28 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gitpod
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - gitpod.dev.erpf.de
+        - "*.gitpod.dev.erpf.de"
+        - "*.ws.gitpod.dev.erpf.de"
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: "SIMPLE"
+        credentialName: gitpod-tls
+      hosts:
+        - gitpod.dev.erpf.de
+        - "*.gitpod.dev.erpf.de"
+        - "*.ws.gitpod.dev.erpf.de"
