@@ -1,0 +1,6 @@
+clusterDomain: athena.local
+
+postgresql:
+  existingSecret: postgres-credentials
+pgpool:
+  existingSecret: postgres-credentials
