@@ -18,14 +18,7 @@ global:
 #       "kubernetes.io/tls-acme": true
 #       "cert-manager.io/cluster-issuer": "cloudflare-letsencrypt-staging"
       configureCertmanager: false
-#       enabled: true
-#     tls:
-#       enabled: true
-
-# nginx-ingress:
-#   controller:
-#     service:
-#       type: ClusterIP
+      enabled: false
 
   # psql: # https://docs.gitlab.com/charts/advanced/external-db/
   #   host: postgresql-postgresql-ha-postgresql.postgresql.svc.athena.local
@@ -35,16 +28,24 @@ global:
   #     key: gitlab-password
   #   database: gitlab
 
+  # redis: # https://docs.gitlab.com/charts/advanced/external-redis/
+  #   host: redis.redis.svc.athena.local
+  #   password:
+  #     secret: redis-credentials
+  #     key: password
+
 certmanager: 
   install: false
 
 certmanager-issuer:
   email: letsencrypt@erpf.de # use your real email address here
 
-nginx-ingress:
-  enabled: false
+# nginx-ingress:
+#   enabled: false
 
 # postgresql:
+#   install: false
+# redis:
 #   install: false
 
 gitlab:
