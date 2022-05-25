@@ -27,14 +27,25 @@ global:
 #     service:
 #       type: ClusterIP
 
+  # psql: # https://docs.gitlab.com/charts/advanced/external-db/
+  #   host: postgresql-postgresql-ha-postgresql.postgresql.svc.athena.local
+  #   username: gitlab
+  #   password:
+  #     secret: postgres-credentials
+  #     key: gitlab-password
+  #   database: gitlab
+
 certmanager: 
   install: false
 
 certmanager-issuer:
   email: letsencrypt@erpf.de # use your real email address here
 
-# nginx-ingress:
-#   enabled: false
+nginx-ingress:
+  enabled: false
+
+# postgresql:
+#   install: false
 
 gitlab:
   webservice: 

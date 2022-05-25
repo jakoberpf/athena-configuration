@@ -4,3 +4,4 @@ resources:
   - certificates.yaml
   - virtualservice.yaml
   - gateway.yaml
+  - secrets.yaml
