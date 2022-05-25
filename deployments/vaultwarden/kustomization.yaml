@@ -1,26 +1,4 @@
 namespace: vaultwarden
-helmCharts:
-- name: vaultwarden
-  repo: https://jakoberpf.github.io/charts/
-  version: 0.1.8
-  releaseName: vaultwarden
-  namespace: vaultwarden
-  valuesInline:
-    persistence:
-      enabled: false
-    ingress:
-      enabled: true
-      hosts: 
-        - host: vaultwarden.dev.erpf.de
-      tls:
-        enabled: true
-        redirect: false
-      istioGateway:
-        enabled: true
-      certManager:
-        enabled: true
-        issuerRef: 
-          name: cloudflare-letsencrypt-staging
 resources:
   - namespace.yaml
   - secrets.yaml
