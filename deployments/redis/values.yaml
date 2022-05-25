@@ -1,0 +1,4 @@
+clusterDomain: athena.local
+
+sentinel:
+  enabled: true
