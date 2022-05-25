@@ -1,4 +1,8 @@
 clusterDomain: athena.local
 
+auth:
+  existingSecret: redis-credentials
+  existingSecretPasswordKey: password
+
 sentinel:
   enabled: true
