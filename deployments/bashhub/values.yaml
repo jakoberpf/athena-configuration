@@ -1,0 +1,17 @@
+image:
+  repository: nicksherron/bashhub-server
+persistence:
+  enabled: false
+ingress:
+  enabled: true
+  hosts: 
+    - host: bashhub.dev.erpf.de
+  tls:
+    enabled: true
+    redirect: false
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-staging
