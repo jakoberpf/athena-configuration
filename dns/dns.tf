@@ -26,8 +26,6 @@ locals {
     "vaultwarden.dev.erpf.de",
     "bitwarden.dev.erpf.de",
     "gitlab.dev.erpf.de",
-    "registry.dev.erpf.de",
-    "minio.dev.erpf.de",
     "gitpod.dev.erpf.de",
   ]
 }
