@@ -20,26 +20,3 @@ done
 
 kubectl apply -k .
 kubens gitpod
-
-docker build . -t gitpod-installer
-
-# docker run -it --rm \
-#   --name gitpod-installer \
-#   --volume "$(pwd)"/installer:/installer \
-#   gitpod-installer gitpod-installer init >> installer/config.yaml
-
-docker run -it --rm \
-  --name gitpod-installer \
-  --volume "$(pwd)"/installer:/installer \
-  gitpod-installer gitpod-installer validate config --config /installer/config.yaml
-
-docker run -it --rm \
-  --name gitpod-installer \
-  --volume "$(pwd)"/installer:/installer \
-  --volume "$(pwd)"/../../.kube:/kube \
-  gitpod-installer gitpod-installer validate cluster --kubeconfig /kube/admin.conf --config /installer/config.yaml
-
-docker run -it --rm \
-  --name gitpod-installer \
-  --volume "$(pwd)"/installer:/installer \
-  gitpod-installer gitpod-installer render --config /installer/config.yaml > installer/deployment.yaml

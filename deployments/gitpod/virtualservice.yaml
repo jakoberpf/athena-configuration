@@ -17,5 +17,5 @@ spec:
       route:
       - destination:
           port:
-            number: ??
-          host: ??
+            number: 80
+          host: proxy
