@@ -4,6 +4,7 @@ ingress:
   enabled: true
   hosts: 
     - host: vaultwarden.dev.erpf.de
+    - host: bitwarden.dev.erpf.de
   tls:
     enabled: true
     redirect: false
