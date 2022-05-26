@@ -1,6 +1,6 @@
 namespace: gitpod
 resources:
   - namespace.yaml
-  # - certificates.yaml
+  - certificates.yaml
   # - virtualservice.yaml
   # - gateway.yaml
