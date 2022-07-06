@@ -1,5 +1,6 @@
-persistence:
-  enabled: false
+teleport-cluster: 
+  persistence:
+    enabled: true
 ingress:
   enabled: true
   hosts: 
