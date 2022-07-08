@@ -1,0 +1,19 @@
+image:
+  repository: nicksherron/bashhub-server
+persistence:
+  enabled: true
+  pvc:
+    name: bashhub-data-live
+ingress:
+  enabled: true
+  hosts: 
+    - host: bashhub.erpf.de
+  tls:
+    enabled: true
+    redirect: false
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-prod
