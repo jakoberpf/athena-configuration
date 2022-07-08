@@ -2,6 +2,8 @@ image:
   repository: nicksherron/bashhub-server
 persistence:
   enabled: false
+  # pvc:
+  #   name: bashhub-data-dev
 ingress:
   enabled: true
   hosts: 
