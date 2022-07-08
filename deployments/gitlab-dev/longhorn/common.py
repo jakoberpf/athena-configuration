@@ -15,7 +15,7 @@ import threading
 import socket
 import pytest
 
-import longhorn
+import client
 import requests
 import warnings
 
@@ -611,7 +611,7 @@ def delete_and_wait_longhorn(client, name):
         client.delete(v)
     except ApiException as ex:
         assert ex.status == 404
-    except longhorn.ApiError as err:
+    except client.ApiError as err:
         # for deleting a non-existing volume,
         # the status_code is 500 Server Error.
         assert err.error.code == 500
@@ -1500,7 +1500,7 @@ def cleanup_client():
 
 def get_client(address):
     url = 'http://' + address + '/v1/schemas'
-    c = longhorn.from_env(url=url)
+    c = client.from_env(url=url)
     return c
 
 

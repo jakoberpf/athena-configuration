@@ -1,4 +1,4 @@
-import longhorn
+import longhorn.client
 import time
 
 Ki = 1024
@@ -97,7 +97,7 @@ def create_and_check_volume(client, volume_name, size, num_of_replicas=3, backin
     assert volume.created != ""
     return volume
 
-client = longhorn.Client(url=longhorn_url)
+client = longhorn.client.Client(url=longhorn_url)
 
 # Volume operations
 # List all volumes
@@ -105,4 +105,4 @@ client = longhorn.Client(url=longhorn_url)
 
 for volume in volumes:
     print(volume.name)
-    create_and_check_volume(client, volume.name, volume.size)
+    # create_and_check_volume(client, volume.name, volume.size)
