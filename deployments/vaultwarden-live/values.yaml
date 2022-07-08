@@ -1,0 +1,18 @@
+persistence:
+  enabled: true
+  pvc:
+    name: vaultwarden-data
+ingress:
+  enabled: true
+  hosts: 
+    - host: vaultwarden.erpf.de
+    - host: bitwarden.erpf.de
+  tls:
+    enabled: true
+    redirect: false
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-staging

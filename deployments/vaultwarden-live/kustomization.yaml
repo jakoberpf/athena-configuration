@@ -1,0 +1,4 @@
+namespace: vaultwarden-live
+resources:
+  - namespace.yaml
+  - secrets.yaml
