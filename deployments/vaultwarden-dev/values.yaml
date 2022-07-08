@@ -1,3 +1,5 @@
+app:
+  domain: https://vaultwarden.dev.erpf.de
 persistence:
   enabled: true
   pvc:
