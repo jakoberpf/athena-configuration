@@ -39,3 +39,4 @@ override.tf.json
 charts
 # local secrets
 secrets
+__pycache__
