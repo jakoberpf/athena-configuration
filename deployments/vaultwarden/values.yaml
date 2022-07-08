@@ -1,5 +1,7 @@
 persistence:
-  enabled: false
+  enabled: true
+  pvc:
+    name: vaultwarden-data
 ingress:
   enabled: true
   hosts: 
