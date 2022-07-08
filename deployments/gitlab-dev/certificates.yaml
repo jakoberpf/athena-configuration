@@ -2,9 +2,9 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: gitlab-tls
+  name: gitlab-dev-tls
 spec:
-  secretName: gitlab-tls
+  secretName: gitlab-dev-tls
   issuerRef:
     name: cloudflare-letsencrypt-staging
     kind: ClusterIssuer
@@ -22,9 +22,9 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: registry-tls
+  name: registry-dev-tls
 spec:
-  secretName: registry-tls
+  secretName: registry-dev-tls
   issuerRef:
     name: cloudflare-letsencrypt-staging
     kind: ClusterIssuer
@@ -42,9 +42,9 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: minio-tls
+  name: minio-dev-tls
 spec:
-  secretName: minio-tls
+  secretName: minio-dev-tls
   issuerRef:
     name: cloudflare-letsencrypt-staging
     kind: ClusterIssuer

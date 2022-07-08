@@ -66,3 +66,11 @@ minio:
   ingress:
     tls:
       secretName: minio-tls
+  persistence:
+    volumeName: gitlab-minio-dev # https://docs.gitlab.com/charts/charts/minio/
+    storageClass: longhorn-static
+
+prometheus:
+  server:
+    persistentVolume:
+      existingClaim: gitlab-prometheus-server # https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml

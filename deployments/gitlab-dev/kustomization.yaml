@@ -1,4 +1,4 @@
-namespace: gitlab
+namespace: gitlab-dev
 resources:
   - namespace.yaml
   - certificates.yaml

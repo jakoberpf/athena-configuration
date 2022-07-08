@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: gitlab
+  name: gitlab-dev
   labels:
     app: gitlab
     # istio-injection: enabled # Not supported by vanilla helm chart

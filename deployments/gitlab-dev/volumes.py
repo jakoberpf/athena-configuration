@@ -18,17 +18,19 @@ longhorn_url = 'http://longhorn-frontend.longhorn-system/v1'
 longhorn_url = 'http://localhost:8080/v1'
 
 class VolumeDefinition():
-    def __init__(self, name, size):
+    def __init__(self, name, size, pv, pvc):
         self.name = name
         self.size = str(size * Gi)
+        self.pv = pv
+        self.pvc = pvc
 
 volumes = []
 
-volumes.append(VolumeDefinition("gitlab-dev-postgresql-data-0", 8))
-volumes.append(VolumeDefinition("gitlab-dev-minio", 8))
-volumes.append(VolumeDefinition("gitlab-dev-prometheus-server", 8))
-volumes.append(VolumeDefinition("gitlab-dev-redis-master-0", 8))
-volumes.append(VolumeDefinition("gitlab-dev-gitaly-data-0", 8))
+volumes.append(VolumeDefinition("gitlab-dev-postgresql-data-0", 8, "data-gitlab-postgresql-0-dev", "data-gitlab-postgresql-0"))
+volumes.append(VolumeDefinition("gitlab-dev-minio", 8, "gitlab-minio-dev", ""))
+volumes.append(VolumeDefinition("gitlab-dev-prometheus-server", 8, "gitlab-prometheus-server-dev", "gitlab-prometheus-server"))
+volumes.append(VolumeDefinition("gitlab-dev-redis-master-0", 8, "redis-data-gitlab-redis-master-0-dev", "redis-data-gitlab-redis-master-0"))
+volumes.append(VolumeDefinition("gitlab-dev-gitaly-data-0", 8, "repo-data-gitlab-gitaly-0-dev", "repo-data-gitlab-gitaly-0"))
 
 # this function will check if backing image feature is supported, and is added
 # for the case of test_upgrade starting from Longhorn <= v1.1.0
