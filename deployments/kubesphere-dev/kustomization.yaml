@@ -1,3 +1,0 @@
-namespace: kubesphere-dev
-resources:
-  - namespace.yaml
