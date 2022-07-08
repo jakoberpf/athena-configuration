@@ -1,0 +1,10 @@
+longhorn:
+  - "postgresql-data-0-dev":
+    pv: data-postgresql-postgresql-ha-postgresql-0
+    pvc: data-postgresql-postgresql-ha-postgresql-0
+  - "postgresql-data-1-dev":
+    pv: data-postgresql-postgresql-ha-postgresql-1
+    pvc: data-postgresql-postgresql-ha-postgresql-1
+  - "postgresql-data-2-dev":
+    pv: data-postgresql-postgresql-ha-postgresql-2
+    pvc: data-postgresql-postgresql-ha-postgresql-2
