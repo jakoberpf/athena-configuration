@@ -1,4 +1,4 @@
-namespace: vaultwarden
+namespace: vaultwarden-dev
 resources:
   - namespace.yaml
   - secrets.yaml
