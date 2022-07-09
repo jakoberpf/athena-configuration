@@ -1,0 +1,4 @@
+namespace: keycloak-live
+resources:
+  - namespace.yaml
+  - secrets.yaml
