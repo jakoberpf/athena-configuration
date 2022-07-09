@@ -60,6 +60,7 @@ locals {
     "vaultwarden.erpf.de",
     "vaultwarden.dev.erpf.de",
     "bitwarden.dev.erpf.de",
+    "iam.erpf.de",
     "iam.dev.erpf.de",
   ]
 }
