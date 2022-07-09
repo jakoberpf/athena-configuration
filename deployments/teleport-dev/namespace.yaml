@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: teleport
+  name: teleport-dev
   labels:
     app: teleport
     istio-injection: enabled
