@@ -1,0 +1,4 @@
+namespace: keycloak-dev
+resources:
+  - namespace.yaml
+  - secrets.yaml

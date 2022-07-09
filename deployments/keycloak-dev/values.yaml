@@ -1,0 +1,17 @@
+persistence:
+  enabled: true
+  pvc:
+    name: keycloak-data-dev
+ingress:
+  enabled: true
+  hosts: 
+    - host: iam.dev.erpf.de
+  tls:
+    enabled: true
+    redirect: false
+  istioGateway:
+    enabled: true
+  certManager:
+    enabled: true
+    issuerRef: 
+      name: cloudflare-letsencrypt-staging
