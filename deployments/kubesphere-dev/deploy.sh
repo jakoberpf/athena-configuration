@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+kubectl apply -k .
+
 kubectl apply -f kubesphere-installer.yaml
 kubectl apply -f cluster-configuration.yaml
 

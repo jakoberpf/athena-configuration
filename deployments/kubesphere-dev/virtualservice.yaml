@@ -1,0 +1,19 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kubesphere
+spec:
+  hosts:
+    - kubesphere.dev.erpf.de
+  gateways:
+    - kubesphere
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+      - destination:
+          port:
+            number: 8181
+          host: kubesphere-webservice-default
