@@ -1,6 +1,5 @@
-namespace: gitlab-dev
+namespace: kubesphere-system
 resources:
-  - namespace.yaml
   - certificates.yaml
   - virtualservice.yaml
   - gateway.yaml

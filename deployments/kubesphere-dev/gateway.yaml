@@ -19,6 +19,6 @@ spec:
         protocol: HTTPS
       tls:
         mode: "SIMPLE"
-        credentialName: kubesphere-tls
+        credentialName: kubesphere-dev-tls
       hosts:
         - kubesphere.dev.erpf.de

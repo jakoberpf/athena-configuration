@@ -15,5 +15,5 @@ spec:
       route:
       - destination:
           port:
-            number: 8181
-          host: kubesphere-webservice-default
+            number: 80
+          host: ks-console
