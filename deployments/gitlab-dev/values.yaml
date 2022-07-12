@@ -52,7 +52,7 @@ gitlab:
   webservice: 
     ingress:
       tls:
-        secretName: gitlab-tls
+        secretName: gitlab-dev-tls
   gitaly:
     persistence:
       size: "8Gi"
@@ -60,12 +60,12 @@ gitlab:
 registry:
   ingress:
     tls:
-      secretName: registry-tls
+      secretName: registry-dev-tls
 
 minio:
   ingress:
     tls:
-      secretName: minio-tls
+      secretName: minio-dev-tls
   persistence:
     volumeName: gitlab-minio-dev # https://docs.gitlab.com/charts/charts/minio/
     storageClass: longhorn-static

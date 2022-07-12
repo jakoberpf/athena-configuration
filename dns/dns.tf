@@ -56,10 +56,11 @@ locals {
     "anonaddy.dev.erpf.de"
   ]
   domains_https = [  
-    "bitwarden.erpf.de",
     "vaultwarden.erpf.de",
     "vaultwarden.dev.erpf.de",
+    "bitwarden.erpf.de",
     "bitwarden.dev.erpf.de",
+    "kubesphere.dev.erpf.de",
     "iam.erpf.de",
     "iam.dev.erpf.de",
   ]
