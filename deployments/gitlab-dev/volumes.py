@@ -26,11 +26,11 @@ class VolumeDefinition():
 
 volumes = []
 
-volumes.append(VolumeDefinition("gitlab-dev-postgresql-data-0", 8, "data-gitlab-postgresql-0-dev", "data-gitlab-postgresql-0"))
-volumes.append(VolumeDefinition("gitlab-dev-minio", 8, "gitlab-minio-dev", ""))
-volumes.append(VolumeDefinition("gitlab-dev-prometheus-server", 8, "gitlab-prometheus-server-dev", "gitlab-prometheus-server"))
-volumes.append(VolumeDefinition("gitlab-dev-redis-master-0", 8, "redis-data-gitlab-redis-master-0-dev", "redis-data-gitlab-redis-master-0"))
-volumes.append(VolumeDefinition("gitlab-dev-gitaly-data-0", 8, "repo-data-gitlab-gitaly-0-dev", "repo-data-gitlab-gitaly-0"))
+volumes.append(VolumeDefinition("test-gitlab-dev-postgresql-data-0", 8, "data-gitlab-dev-postgresql-0", "data-gitlab-postgresql-0"))
+volumes.append(VolumeDefinition("test-gitlab-dev-minio", 10, "gitlab-dev-minio", ""))
+volumes.append(VolumeDefinition("test-gitlab-dev-prometheus-server", 8, "gitlab-dev-prometheus-server", "gitlab-prometheus-server"))
+volumes.append(VolumeDefinition("test-gitlab-dev-redis-master-0", 8, "redis-data-gitlab-dev-redis-master-0", "redis-data-gitlab-redis-master-0"))
+volumes.append(VolumeDefinition("test-gitlab-dev-gitaly-data-0", 8, "repo-data-gitlab-dev-gitaly-0", "repo-data-gitlab-gitaly-0"))
 
 # this function will check if backing image feature is supported, and is added
 # for the case of test_upgrade starting from Longhorn <= v1.1.0
@@ -107,4 +107,4 @@ client = longhorn.client.Client(url=longhorn_url)
 
 for volume in volumes:
     print(volume.name)
-    # create_and_check_volume(client, volume.name, volume.size)
+    create_and_check_volume(client, volume.name, volume.size)
