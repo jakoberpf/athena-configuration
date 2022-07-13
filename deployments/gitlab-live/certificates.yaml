@@ -1,0 +1,59 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: gitlab-live-tls
+spec:
+  secretName: gitlab-live-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: gitlab.erpf.de
+  dnsNames:
+    - gitlab.erpf.de
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"  
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "istio-system"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "istio-system"
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: registry-live-tls
+spec:
+  secretName: registry-live-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: registry.erpf.de
+  dnsNames:
+    - registry.erpf.de
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"  
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "istio-system"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "istio-system"
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: minio-live-tls
+spec:
+  secretName: minio-live-tls
+  issuerRef:
+    name: cloudflare-letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: minio.erpf.de
+  dnsNames:
+    - minio.erpf.de
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"  
+      reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: "istio-system"
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+      reflector.v1.k8s.emberstack.com/reflection-auto-namespaces: "istio-system"

@@ -1,0 +1,7 @@
+namespace: gitlab-live
+resources:
+  - namespace.yaml
+  - certificates.yaml
+  - virtualservice.yaml
+  - gateway.yaml
+  - secrets.yaml
