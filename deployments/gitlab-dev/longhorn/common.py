@@ -30,7 +30,7 @@ Ki = 1024
 Mi = (1024 * 1024)
 Gi = (1024 * Mi)
 
-SIZE = str(16 * Mi)
+# SIZE = str(16 * Mi)
 EXPAND_SIZE = str(32 * Mi)
 VOLUME_NAME = "longhorn-testvol"
 STATEFULSET_NAME = "longhorn-teststs"
@@ -41,8 +41,7 @@ VOLUME_INVALID_POS = -1
 VOLUME_HEAD_NAME = "volume-head"
 
 BACKING_IMAGE_NAME = "bi-test"
-BACKING_IMAGE_QCOW2_URL = \
-    "https://longhorn-backing-image.s3-us-west-1.amazonaws.com/parrot.qcow2"
+BACKING_IMAGE_QCOW2_URL = "https://longhorn-backing-image.s3-us-west-1.amazonaws.com/parrot.qcow2"
 BACKING_IMAGE_QCOW2_CHECKSUM = \
     "bd79ab9e6d45abf4f3f0adf552a868074dd235c4698ce7258d521160e0ad79ffe555b94" \
     "e7d4007add6e1a25f4526885eb25c53ce38f7d344dd4925b9f2cb5d3b"
@@ -403,13 +402,10 @@ def delete_backup_volume(client, volume_name):
     wait_for_backup_volume_delete(client, volume_name)
 
 
-def create_and_check_volume(client, volume_name,
-                            num_of_replicas=3, size=SIZE, backing_image="",
-                            frontend=VOLUME_FRONTEND_BLOCKDEV):
+def create_and_check_volume(client, volume_name, size, num_of_replicas=3, backing_image="", frontend=VOLUME_FRONTEND_BLOCKDEV):
     """
     Create a new volume with the specified parameters. Assert that the new
     volume is detached and that all of the requested parameters match.
-
     :param client: The Longhorn client to use in the request.
     :param volume_name: The name of the volume.
     :param num_of_replicas: The number of replicas the volume should have.

@@ -1,6 +1,7 @@
-import longhorn.client
-import longhorn.common
+import client
+import common
 import time
+import json
 
 Ki = 1024
 Mi = (1024 * 1024)
@@ -33,12 +34,22 @@ volumes_to_create.append(VolumeDefinition("gitlab-dev-prometheus-server", 8, "gi
 volumes_to_create.append(VolumeDefinition("gitlab-dev-redis-master-0", 8, "redis-data-gitlab-dev-redis-master-0", "redis-data-gitlab-redis-master-0"))
 volumes_to_create.append(VolumeDefinition("gitlab-dev-gitaly-data-0", 8, "repo-data-gitlab-dev-gitaly-0", "repo-data-gitlab-gitaly-0"))
 
-client = longhorn.client.Client(url=longhorn_url)
+client = client.Client(url=longhorn_url)
 
-def check_if_volume_exists(client, volumename):
+def get_volume_by_name(client, name):
     volumes = client.list_volume()
+    if check_if_volume_exists_in_volumes(name, volumes):
+        for volume in volumes:
+            if volume.name == name:
+                return volume
+
+def check_if_volume_exists(client, name):
+    volumes = client.list_volume()
+    return check_if_volume_exists_in_volumes(name, volumes)
+
+def check_if_volume_exists_in_volumes(name, volumes):
     for volume in volumes:
-        if volume.name == volumename:
+        if volume.name == name:
             return True
     return False
 
@@ -46,4 +57,7 @@ def check_if_volume_exists(client, volumename):
 for volume in volumes_to_create:
     print(volume.name)
     if not check_if_volume_exists(client, volume.name):
-        longhorn.common.create_and_check_volume(client, volume.name, volume.size)
+        common.create_and_check_volume(client, volume.name, volume.size)
+    longhorn_volume = get_volume_by_name(client, volume.name)
+    print(longhorn_volume)
+    # longhorn.common.create_pv_for_volume()
