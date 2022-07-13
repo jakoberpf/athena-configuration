@@ -67,10 +67,10 @@ minio:
     tls:
       secretName: minio-dev-tls
   persistence:
-    volumeName: gitlab-minio-dev # https://docs.gitlab.com/charts/charts/minio/
+    volumeName: gitlab-dev-minio # https://docs.gitlab.com/charts/charts/minio/
     storageClass: longhorn-static
 
 prometheus:
   server:
     persistentVolume:
-      existingClaim: gitlab-prometheus-server # https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
+      existingClaim: gitlab-dev-prometheus-server # https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
