@@ -19,7 +19,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: "SIMPLE"
-        credentialName: gitlab-tls
+        credentialName: gitlab-dev-tls
       hosts:
         - gitlab.dev.erpf.de
 
@@ -44,7 +44,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: "SIMPLE"
-        credentialName: registry-tls
+        credentialName: registry-dev-tls
       hosts:
         - registry.dev.erpf.de
 
@@ -69,6 +69,6 @@ spec:
         protocol: HTTPS
       tls:
         mode: "SIMPLE"
-        credentialName: minio-tls
+        credentialName: minio-dev-tls
       hosts:
         - minio.dev.erpf.de
