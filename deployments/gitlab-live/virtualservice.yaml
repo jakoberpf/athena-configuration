@@ -16,7 +16,7 @@ spec:
       - destination:
           port:
             number: 8181
-          host: gitlab-webservice-default
+          host: gitlab-live-webservice-default
 
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -36,7 +36,7 @@ spec:
       - destination:
           port:
             number: 5000
-          host: gitlab-registry
+          host: gitlab-live-registry
 
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -56,4 +56,4 @@ spec:
       - destination:
           port:
             number: 9000
-          host: gitlab-minio-svc
+          host: gitlab-live-minio-svc

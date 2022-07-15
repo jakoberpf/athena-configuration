@@ -19,7 +19,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: "SIMPLE"
-        credentialName: gitlab-tls
+        credentialName: gitlab-live-tls
       hosts:
         - gitlab.erpf.de
 
@@ -44,7 +44,7 @@ spec:
         protocol: HTTPS
       tls:
         mode: "SIMPLE"
-        credentialName: registry-tls
+        credentialName: registry-live-tls
       hosts:
         - registry.erpf.de
 
@@ -69,6 +69,6 @@ spec:
         protocol: HTTPS
       tls:
         mode: "SIMPLE"
-        credentialName: minio-tls
+        credentialName: minio-live-tls
       hosts:
         - minio.erpf.de

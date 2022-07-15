@@ -13,8 +13,8 @@ global:
     minio:
       # name: minio.example.com
       https: false
-  smtp: smtp.strato.de
-  email: gitlab@erpf.de
+  # smtp: smtp.strato.de
+  # email: gitlab@erpf.de
   ingress:
 #     annotations:
 #       "kubernetes.io/tls-acme": true
@@ -69,7 +69,7 @@ minio:
     tls:
       secretName: gitlab-live-tls
   persistence:
-    volumeName: gitlab-minio-live # https://docs.gitlab.com/charts/charts/minio/
+    volumeName: gitlab-live-minio # https://docs.gitlab.com/charts/charts/minio/
     storageClass: longhorn-static
 
 prometheus:
