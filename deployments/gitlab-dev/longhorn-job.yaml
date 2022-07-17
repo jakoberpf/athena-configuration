@@ -10,12 +10,12 @@ spec:
         - name: longhorn-configurator
           image: jakoberpf/longhorn-api
           imagePullPolicy: Always
-          command: ["/bin/bash"]
-          args: ["-c", "python",  "handler.py"]
+          # command: ["/bin/bash"]
+          # args: ["-c", "pyhton handler.py"]
           volumeMounts:
           - name: config
             mountPath: "/longhorn/config.yaml"
-            readOnly: true
+            subPath: config.yaml
       restartPolicy: Never
       volumes:
         - name: config

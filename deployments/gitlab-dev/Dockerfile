@@ -16,4 +16,4 @@ RUN pip install -r requirements.txt
 ADD ./longhorn /longhorn
 WORKDIR /longhorn
 
-CMD [ "python", "./handler.py" ]
+CMD [ "python", "handler.py" ]

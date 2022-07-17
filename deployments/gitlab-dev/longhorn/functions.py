@@ -70,3 +70,4 @@ def get_volumes_from_config(path):
             volume['pvc']
             )
         )
+    return volumes

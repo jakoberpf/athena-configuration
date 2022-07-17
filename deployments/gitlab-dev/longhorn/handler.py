@@ -2,17 +2,6 @@ import client
 import common
 import functions
 
-Ki = 1024
-Mi = (1024 * 1024)
-Gi = (1024 * Mi)
-
-RETRY_COUNTS = 300
-RETRY_INTERVAL = 0.5
-
-VOLUME_FIELD_STATE = "state"
-VOLUME_STATE_ATTACHED = "attached"
-VOLUME_STATE_DETACHED = "detached"
-
 longhorn_url = 'http://longhorn-frontend.longhorn-system/v1' # 'http://localhost:8080/v1'
 
 functions.get_client()
@@ -46,3 +35,5 @@ for volume in volumes_to_create:
     longhorn_volume = get_volume_by_name(client, volume.name)
     print(longhorn_volume)
     # common.create_pv_for_volume(client, volume)
+
+print("Finished provisioning longhorn volumes")
