@@ -33,7 +33,12 @@ for volume in volumes_to_create:
     if not check_if_volume_exists(client, volume.name):
         common.create_and_check_volume(client, volume.name, volume.size)
     longhorn_volume = get_volume_by_name(client, volume.name)
-    print(longhorn_volume)
-    # common.create_pv_for_volume(client, volume)
+    print("[trace] Longhorn volume state: %s" % (longhorn_volume))
+    if volume.pv is not None:
+        print("[debug] PV %s defined for volume %s" % (volume.pv, volume.name))
+        common.create_pv_for_volume(client, common.get_core_api_client(), longhorn_volume, volume.pv)
+    if volume.pvc is not None:
+        print("[debug] PVC %s defined for volume %s" % (volume.pvc, volume.name))
+        # common.create_pvc_for_volume(client, common.get_core_api_client(), longhorn_volume, volume.pvc)
 
 print("[exit] Finished provisioning longhorn volumes")
