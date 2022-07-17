@@ -29,7 +29,7 @@ def check_if_volume_exists_in_volumes(name, volumes):
 
 # Create or update volumes
 for volume in volumes_to_create:
-    print(volume.name)
+    print("[info] Provisioning volume: " + volume.name)
     if not check_if_volume_exists(client, volume.name):
         common.create_and_check_volume(client, volume.name, volume.size)
     longhorn_volume = get_volume_by_name(client, volume.name)
