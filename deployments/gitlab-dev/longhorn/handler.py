@@ -36,4 +36,4 @@ for volume in volumes_to_create:
     print(longhorn_volume)
     # common.create_pv_for_volume(client, volume)
 
-print("Finished provisioning longhorn volumes")
+print("[exit] Finished provisioning longhorn volumes")
