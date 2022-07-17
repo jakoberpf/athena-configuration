@@ -3576,7 +3576,11 @@ def wait_volume_kubernetes_status(client, volume_name, expect_ks):
 
 
 def create_pv_for_volume(client, core_api, volume, pv_name, fs_type="ext4"):
-    volume.pvCreate(pvName=pv_name, fsType=fs_type)
+    print("[debug] Check for existing PV for volume %s" % volume.name)
+    if not check_pv_existence(core_api, pv_name):
+        print("[debug] Creating PV for volume %s" % volume.name)
+        volume.pvCreate(pvName=pv_name, fsType=fs_type)
+
     for i in range(RETRY_COUNTS):
         if check_pv_existence(core_api, pv_name):
             break
