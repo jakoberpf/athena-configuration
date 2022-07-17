@@ -13,8 +13,7 @@ VOLUME_FIELD_STATE = "state"
 VOLUME_STATE_ATTACHED = "attached"
 VOLUME_STATE_DETACHED = "detached"
 
-# If forwarding `longhorn-frontend` service to localhost
-longhorn_url = 'http://localhost:8080/v1'
+longhorn_url = 'http://longhorn-frontend.longhorn-system/v1' # 'http://localhost:8080/v1'
 
 functions.get_client()
 
