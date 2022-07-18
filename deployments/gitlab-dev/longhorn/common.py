@@ -3565,6 +3565,10 @@ def wait_volume_kubernetes_status(client, volume_name, expect_ks):
                    (v == '' and ks[k] != ''):
                     expected = False
                     break
+            elif k in ('pvStatus'):
+                if ks[k] not in v:
+                    expected = False
+                    break
             else:
                 if ks[k] != v:
                     expected = False
