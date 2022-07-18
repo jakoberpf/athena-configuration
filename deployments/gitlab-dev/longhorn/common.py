@@ -3484,7 +3484,9 @@ def check_pv_existence(api, pv_name):
     pvs = api.list_persistent_volume()
     for pv in pvs.items:
         if pv.metadata.name == pv_name and not pv.metadata.deletion_timestamp:
+            print("[debug] Found PV %s" % pv.metadata.name)
             return True
+    print("[debug] Did not find PV %s" % pv.metadata.name)
     return False
 
 
@@ -3553,6 +3555,7 @@ def wait_delete_pv(api, pv_name):
 
 
 def wait_volume_kubernetes_status(client, volume_name, expect_ks):
+    print("[debug] Waiting for volume %s to be ready" % volume_name)
     for i in range(RETRY_COUNTS):
         expected = True
         volume = client.by_id_volume(volume_name)
@@ -3576,6 +3579,7 @@ def wait_volume_kubernetes_status(client, volume_name, expect_ks):
         if expected:
             break
         time.sleep(RETRY_INTERVAL)
+        print("[debug] Timeout waiting for volume to be ready - %s" % i)
     assert expected
 
 def provision_pv_for_volume(client, core_api, volume, pv_name):
@@ -3591,8 +3595,6 @@ def provision_pv_for_volume(client, core_api, volume, pv_name):
     print("[debug] Check for existing PV for volume %s" % volume.name)
     if not check_pv_existence(core_api, pv_name):
         create_pv_for_volume(client, core_api, volume, pv_name)
-
-    assert check_pv_existence(core_api, pv_name)
 
     # TODO when PV is in released status, recreate it
 
