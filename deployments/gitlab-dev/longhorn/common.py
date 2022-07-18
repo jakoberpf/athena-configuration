@@ -3586,6 +3586,7 @@ def create_pv_for_volume(client, core_api, volume, pv_name, fs_type="ext4"):
         if check_pv_existence(core_api, pv_name):
             break
         time.sleep(RETRY_INTERVAL)
+        print("[debug] Timeout waiting for PV to be created - %s" % i)
     assert check_pv_existence(core_api, pv_name)
 
     ks = {
@@ -3600,10 +3601,12 @@ def create_pv_for_volume(client, core_api, volume, pv_name, fs_type="ext4"):
 
 def create_pvc_for_volume(client, core_api, volume, pvc_name):
     volume.pvcCreate(namespace="default", pvcName=pvc_name)
+    print("[debug] Waiting for PVC to be created")
     for i in range(RETRY_COUNTS):
         if check_pvc_existence(core_api, pvc_name):
             break
         time.sleep(RETRY_INTERVAL)
+        print("[debug] Timeout waiting for PVC to be created - %s" % i)
     assert check_pvc_existence(core_api, pvc_name)
 
     ks = {
