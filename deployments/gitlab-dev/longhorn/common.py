@@ -3608,7 +3608,7 @@ def create_pvc_for_volume(client, core_api, volume, pvc_name):
 
     ks = {
         'pvStatus': 'Bound',
-        'namespace': 'default',
+        'namespace': pvc_namespace,
         'lastPVCRefAt': '',
     }
     wait_volume_kubernetes_status(client, volume.name, ks)

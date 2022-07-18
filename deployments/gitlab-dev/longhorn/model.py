@@ -4,8 +4,9 @@ Gi = (1024 * Mi)
 
 
 class VolumeDefinition():
-    def __init__(self, name, size, pv, pvc):
+    def __init__(self, name, namespace, size, pv, pvc):
         self.name = name
+        self.namespace = namespace
         self.size = str(size * Gi)
         self.pv = pv
         self.pvc = pvc

@@ -64,7 +64,8 @@ def get_volumes_from_config(path):
     for volume in config['volumes']:
         print("[info] Loading volume definition " + volume['name'])
         volumes.append(VolumeDefinition(
-            volume['name'],            
+            volume['name'],
+            volume['namespace'],           
             volume['size'], 
             volume['pv'],
             volume['pvc']
