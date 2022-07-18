@@ -3578,6 +3578,33 @@ def wait_volume_kubernetes_status(client, volume_name, expect_ks):
         time.sleep(RETRY_INTERVAL)
     assert expected
 
+def provision_pv_for_volume(client, core_api, volume, pv_name):
+    """
+    provision_pv_for_volume does provision a persistent volume for a longhorn volume.
+
+    :param client: 
+    :param core_api: 
+    :param pvolume: 
+    :param pv_name:
+    :return: the longhorn volume definition
+    """ 
+    print("[debug] Check for existing PV for volume %s" % volume.name)
+    if not check_pv_existence(core_api, pv_name):
+        create_pv_for_volume(client, core_api, volume, pv_name)
+
+    assert check_pv_existence(core_api, pv_name)
+
+    # TODO when PV is in released status, recreate it
+
+    ks = {
+        'pvName': pv_name,
+        'pvStatus': ['Available', 'Bound', 'Released'],
+        'namespace': '',
+        'lastPVCRefAt': '',
+        'lastPodRefAt': '',
+    }
+    wait_volume_kubernetes_status(client, volume.name, ks)
+
 
 def create_pv_for_volume(client, core_api, volume, pv_name, fs_type="ext4"):
     print("[debug] Check for existing PV for volume %s" % volume.name)
