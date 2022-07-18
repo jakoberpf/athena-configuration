@@ -3593,8 +3593,8 @@ def provision_pv_for_volume(client, core_api, longhorn_volume, volume_definition
 
     :param client: 
     :param core_api: 
-    :param pvolume: 
-    :param pv_name:
+    :param longhorn_volume: 
+    :param volume_definition:
     :return: the longhorn volume definition
     """ 
     print("[debug] Check for existing PV for volume %s" % longhorn_volume.name)
