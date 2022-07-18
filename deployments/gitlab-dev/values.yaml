@@ -21,6 +21,7 @@ global:
       enabled: false
 
   # psql: # https://docs.gitlab.com/charts/advanced/external-db/
+          # https://docs.gitlab.com/charts/charts/gitlab/migrations/index.html#postgresql
   #   host: postgresql-postgresql-ha-postgresql.postgresql.svc.athena.local
   #   username: gitlab
   #   password:
@@ -29,6 +30,7 @@ global:
   #   database: gitlab
 
   # redis: # https://docs.gitlab.com/charts/advanced/external-redis/
+           # https://docs.gitlab.com/charts/charts/gitlab/migrations/index.html#redis
   #   host: redis.redis.svc.athena.local
   #   password:
   #     secret: redis-credentials
