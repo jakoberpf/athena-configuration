@@ -3476,7 +3476,9 @@ def check_pvc_existence(api, pvc_name, namespace="default"):
     for pvc in pvcs.items:
         if pvc.metadata.name == pvc_name and not \
                 pvc.metadata.deletion_timestamp:
+            print("[debug] Found PVC %s in %s" % (pvc.metadata.name, namespace))
             return True
+    print("[debug] Did not find PVC %s in %s" % (pvc_name, namespace))
     return False
 
 
@@ -3486,7 +3488,7 @@ def check_pv_existence(api, pv_name):
         if pv.metadata.name == pv_name and not pv.metadata.deletion_timestamp:
             print("[debug] Found PV %s" % pv.metadata.name)
             return True
-    print("[debug] Did not find PV %s" % pv.metadata.name)
+    print("[debug] Did not find PV %s" % pv_name)
     return False
 
 
@@ -3567,14 +3569,17 @@ def wait_volume_kubernetes_status(client, volume_name, expect_ks):
                 if (v != '' and ks[k] == '') or \
                    (v == '' and ks[k] != ''):
                     expected = False
+                    print("[debug] lastPVCRefAt or lastPodRefAt is %s, but should be %s" % (ks[k], v))
                     break
             elif k in ('pvStatus'):
                 if ks[k] not in v:
                     expected = False
+                    print("[debug] %s is %s, but should be %s" % (k, ks[k], v))
                     break
             else:
                 if ks[k] != v:
                     expected = False
+                    print("[debug] %s is %s, but should be %s" % (k, ks[k], v))
                     break
         if expected:
             break
@@ -3582,7 +3587,7 @@ def wait_volume_kubernetes_status(client, volume_name, expect_ks):
         print("[debug] Timeout waiting for volume to be ready - %s" % i)
     assert expected
 
-def provision_pv_for_volume(client, core_api, volume, pv_name):
+def provision_pv_for_volume(client, core_api, longhorn_volume, volume_definition):
     """
     provision_pv_for_volume does provision a persistent volume for a longhorn volume.
 
@@ -3592,20 +3597,26 @@ def provision_pv_for_volume(client, core_api, volume, pv_name):
     :param pv_name:
     :return: the longhorn volume definition
     """ 
-    print("[debug] Check for existing PV for volume %s" % volume.name)
-    if not check_pv_existence(core_api, pv_name):
-        create_pv_for_volume(client, core_api, volume, pv_name)
+    print("[debug] Check for existing PV for volume %s" % longhorn_volume.name)
+    if not check_pv_existence(core_api, volume_definition.pv):
+        create_pv_for_volume(client, core_api, longhorn_volume, volume_definition.pv)
 
     # TODO when PV is in released status, recreate it
 
+    namespace = ''
+    if check_pvc_existence(core_api, volume_definition.pvc, volume_definition.namespace): 
+        namespace = volume_definition.namespace
+
     ks = {
-        'pvName': pv_name,
+        'pvName': volume_definition.pv,
         'pvStatus': ['Available', 'Bound', 'Released'],
-        'namespace': '',
+        'namespace': namespace,
         'lastPVCRefAt': '',
         'lastPodRefAt': '',
     }
-    wait_volume_kubernetes_status(client, volume.name, ks)
+    print(ks)
+
+    wait_volume_kubernetes_status(client, longhorn_volume.name, ks)
 
 
 def create_pv_for_volume(client, core_api, volume, pv_name, fs_type="ext4"):
@@ -3641,10 +3652,8 @@ def provision_pvc_for_volume(client, core_api, longhorn_volume, volume_definitio
     :return: the longhorn volume definition
     """ 
     print("[debug] Check for existing PVC for volume %s" % longhorn_volume.name)
-    if not check_pvc_existence(core_api, pvc_name):
+    if not check_pvc_existence(core_api, volume_definition.pvc, volume_definition.namespace):
         create_pvc_for_volume(client, core_api, longhorn_volume, volume_definition.pvc, volume_definition.namespace)
-
-    assert check_pvc_existence(core_api, pvc_name)
 
     ks = {
         'pvStatus': 'Bound',
@@ -3660,11 +3669,11 @@ def create_pvc_for_volume(client, core_api, volume, pvc_name, pvc_namespace):
 
     print("[debug] Waiting for PVC to be created")
     for i in range(RETRY_COUNTS):
-        if check_pvc_existence(core_api, pvc_name):
+        if check_pvc_existence(core_api, pvc_name, pvc_namespace):
             break
         time.sleep(RETRY_INTERVAL)
         print("[debug] Timeout waiting for PVC to be created - %s" % i)
-    assert check_pvc_existence(core_api, pvc_name)
+    assert check_pvc_existence(core_api, pvc_name, pvc_namespace)
 
     ks = {
         'pvStatus': 'Bound',

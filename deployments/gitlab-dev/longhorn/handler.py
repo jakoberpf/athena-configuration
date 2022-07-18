@@ -36,7 +36,7 @@ for volume in volumes_to_create:
     print("[trace] Longhorn volume state: %s" % (longhorn_volume))
     if volume.pv is not None:
         print("[debug] PV %s defined for volume %s" % (volume.pv, volume.name))
-        common.provision_pv_for_volume(client, common.get_core_api_client(), longhorn_volume, volume.pv)
+        common.provision_pv_for_volume(client, common.get_core_api_client(), longhorn_volume, volume)
     if volume.pvc is not None:
         print("[debug] PVC %s defined for volume %s" % (volume.pvc, volume.name))
         common.provision_pvc_for_volume(client, common.get_core_api_client(), longhorn_volume, volume)
