@@ -3628,11 +3628,33 @@ def create_pv_for_volume(client, core_api, volume, pv_name, fs_type="ext4"):
     wait_volume_kubernetes_status(client, volume.name, ks)
 
 
-def create_pvc_for_volume(client, core_api, volume, pvc_name, pvc_namespace):
-    print("[debug] Check for existing PVC for volume %s" % volume.name)
+def provision_pvc_for_volume(client, core_api, longhorn_volume, volume_definition):
+    """
+    provision_pvc_for_volume does provision a persistent volume claim for a longhorn volume.
+
+    :param client: 
+    :param core_api: 
+    :param longhorn_volume: 
+    :param volume_definition:
+    :return: the longhorn volume definition
+    """ 
+    print("[debug] Check for existing PVC for volume %s" % longhorn_volume.name)
     if not check_pvc_existence(core_api, pvc_name):
-        print("[debug] Creating PVC for volume %s" % volume.name)
-        volume.pvcCreate(namespace=pvc_namespace, pvcName=pvc_name)
+        create_pvc_for_volume(client, core_api, longhorn_volume, volume_definition.pvc, volume_definition.namespace)
+
+    assert check_pvc_existence(core_api, pvc_name)
+
+    ks = {
+        'pvStatus': 'Bound',
+        'namespace': volume_definition.namespace,
+        'lastPVCRefAt': '',
+    }
+    wait_volume_kubernetes_status(client, volume_definition.name, ks)
+
+
+def create_pvc_for_volume(client, core_api, volume, pvc_name, pvc_namespace):
+    print("[debug] Creating PVC for volume %s" % volume.name)
+    volume.pvcCreate(namespace=pvc_namespace, pvcName=pvc_name)
 
     print("[debug] Waiting for PVC to be created")
     for i in range(RETRY_COUNTS):
