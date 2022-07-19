@@ -6,8 +6,7 @@ lpname=longhorn-provisioner
 
 kubens $namespace
 
-helm uninstall gitlab-umbrella
-helm uninstall gitlab-dev
+helm uninstall gitlab-umbrella-dev
 
 # kubectl delete namespace $namespace
 
