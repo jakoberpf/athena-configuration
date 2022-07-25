@@ -40,8 +40,8 @@ gitlab:
   certmanager-issuer:
     email: letsencrypt@erpf.de # use your real email address here
 
-  # nginx-ingress:
-  #   enabled: false
+  nginx-ingress:
+    enabled: false
 
   # postgresql:
   #   install: false
