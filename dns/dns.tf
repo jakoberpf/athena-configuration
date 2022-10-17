@@ -52,7 +52,6 @@ locals {
     "bashhub.dev.erpf.de",  
     "gitlab.dev.erpf.de",
     "gitpod.dev.erpf.de",
-    "teleport.dev.erpf.de",
     "anonaddy.dev.erpf.de"
   ]
   domains_https = [  

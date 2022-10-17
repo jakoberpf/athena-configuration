@@ -1,3 +1,0 @@
-namespace: teleport-dev
-resources:
-  - namespace.yaml
