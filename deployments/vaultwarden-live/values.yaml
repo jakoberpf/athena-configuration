@@ -1,5 +1,8 @@
 app:
   domain: https://vaultwarden.erpf.de
+  smtp:
+    host: smtp.strato.de
+    from: bitwarden@jakoberpf.de
 persistence:
   enabled: true
   pvc:
