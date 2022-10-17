@@ -49,12 +49,11 @@ module "dns_for_https" {
 locals {
   domains_http = [
     "bashhub.erpf.de",
-    "bashhub.dev.erpf.de",  
+    "bashhub.dev.erpf.de",
     "gitlab.dev.erpf.de",
-    "gitpod.dev.erpf.de",
-    "anonaddy.dev.erpf.de"
+    "gitpod.dev.erpf.de"
   ]
-  domains_https = [  
+  domains_https = [
     "vaultwarden.erpf.de",
     "vaultwarden.dev.erpf.de",
     "bitwarden.erpf.de",
